@@ -1,0 +1,163 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+---
+
+<Layout
+  title="Deposit Services — RBAP"
+  description="RBAP member rural banks offer safe, BSP-insured deposit accounts including savings, time deposits, and special savings products across the Philippines."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-green-700 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-emerald-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-emerald-400">Programs & Services</span>
+          <svg class="w-3 h-3 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Deposit Services</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></div>
+          <span class="text-emerald-100 text-sm font-medium tracking-wide">RB Products & Services</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Deposit Services
+        </h1>
+        <p class="text-lg text-emerald-100 max-w-2xl leading-relaxed">
+          Safe, BSP-regulated, and PDIC-insured deposit products that help Filipinos in rural areas save, grow, and protect their money.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+
+          <div class="lg:col-span-2 space-y-8">
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Trusted Deposit Products</h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                RBAP member rural banks offer a range of PDIC-insured deposit accounts that provide rural Filipinos with a secure place to save and grow their money. All deposits are protected up to PHP 500,000 per depositor under the Philippine Deposit Insurance Corporation (PDIC).
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                By maintaining deposits with rural banks, clients directly contribute to the availability of credit in their communities — strengthening the local economy from the ground up.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Account Types</h2>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                  { title: "Regular Savings Account", desc: "A basic savings account with passbook or ATM access — ideal for individuals building their first banking relationship with low or zero maintaining balance." },
+                  { title: "Special Savings Account", desc: "Higher-yield savings products with tiered interest rates based on maintaining balance — for clients with larger savings capacity." },
+                  { title: "Time Deposits", desc: "Fixed-term deposits that earn significantly higher interest rates in exchange for keeping funds for a set period (30, 60, 90 days to 1 year or more)." },
+                  { title: "Youth & Student Savings", desc: "Special accounts designed to introduce young Filipinos to banking and cultivate a savings habit from an early age." },
+                ].map(f => (
+                  <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-5">
+                    <h3 class="font-bold text-gray-900 mb-1">{f.title}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Why Bank with a Rural Bank?</h2>
+              <ul class="space-y-3">
+                {[
+                  "Deposits are PDIC-insured up to PHP 500,000 per depositor",
+                  "Community-focused banks with branches in provinces and municipalities",
+                  "Personalized service and local decision-making",
+                  "Your savings help fund local loans and community growth",
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                      <svg class="w-3 h-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-gray-600 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <div class="bg-emerald-800 rounded-2xl p-6 text-white">
+              <h3 class="font-extrabold text-lg mb-3">Quick Facts</h3>
+              <div class="space-y-3 text-sm">
+                {[
+                  { label: "PDIC Insurance", value: "Up to PHP 500,000" },
+                  { label: "Min. Balance", value: "Low or zero (varies)" },
+                  { label: "Account Types", value: "Savings, TD, Special" },
+                  { label: "Regulated by", value: "BSP & PDIC" },
+                ].map(f => (
+                  <div class="flex justify-between border-b border-white/20 pb-3">
+                    <span class="text-emerald-200">{f.label}</span>
+                    <span class="font-semibold text-right">{f.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+              <h3 class="font-extrabold text-gray-900 mb-3">Other Services</h3>
+              <ul class="space-y-2">
+                {[
+                  { label: "Microfinance Loans & Deposits", href: "/services/MicrofinanceLoansDeposits" },
+                  { label: "Salary Loans", href: "/services/SalaryLoans" },
+                  { label: "Agricultural Loans", href: "/services/AgriculturalLoans" },
+                  { label: "Payment of Bills", href: "/services/PaymentofBills" },
+                  { label: "Remittances", href: "/services/Remittances" },
+                ].map(s => (
+                  <li>
+                    <a href={s.href} class="flex items-center gap-2 text-sm text-gray-700 hover:text-green-700 font-medium transition-colors">
+                      <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Open an Account Today</h2>
+          <p class="text-green-200 text-sm">Find an RBAP member bank near you and start saving with confidence.</p>
+        </div>
+        <a href="/locate-a-bank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm shrink-0">
+          Locate a Bank
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #6ee7b7; opacity: 0.07; }
+</style>

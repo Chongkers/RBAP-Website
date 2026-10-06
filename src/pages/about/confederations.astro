@@ -1,0 +1,150 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+
+const confederations = [
+  {
+    region: "Luzon",
+    color: "green",
+    items: [
+      {
+        no: 1,
+        name: "Confederation of Central Luzon Rural Banks",
+        president: "Jubailene B. Bulawit",
+        ruralBank: "New Rural Bank of San Leonardo (N.E.), Inc.",
+        contact: "(044) 950-0022",
+      },
+      {
+        no: 2,
+        name: "Confederation of Southern Tagalog Rural Bankers",
+        president: "Atanacio Panahon II",
+        ruralBank: "First Mindoro Microfinance Rural Bank, Inc.",
+        contact: "(043) 738-3842",
+      },
+    ],
+  },
+  {
+    region: "Mindanao",
+    color: "emerald",
+    items: [
+      {
+        no: 3,
+        name: "Confederation of South Central Mindanao Rural Bankers Association",
+        president: "Jan S. Ced",
+        ruralBank: "People's Rural Bank (Gen. Santos City), Inc.",
+        contact: "(083) 301-2290, 553-2290, 553-2291",
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Confederations — Rural Bankers Association of the Philippines"
+  description="Explore the RBAP Confederations across Luzon and Mindanao — regional groupings of rural banks championing financial inclusion in their areas."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-green-900 via-green-800 to-emerald-800 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-green-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-green-400">About RBAP</span>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Confederations</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-green-300 animate-pulse"></div>
+          <span class="text-green-100 text-sm font-medium tracking-wide">About RBAP</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Confederations
+        </h1>
+        <p class="text-lg text-green-100 max-w-2xl leading-relaxed">
+          RBAP Confederations are regional groupings that unite rural banks across major island groups, fostering coordination and collective advocacy for financial inclusion nationwide.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-gray-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Tables -->
+    <section class="py-20 bg-gray-50" id="confederation-list">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 space-y-16">
+
+        {confederations.map((group) => (
+          <div class="fade-in">
+            <!-- Region header -->
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-1.5 h-8 bg-green-600 rounded-full"></div>
+              <h2 class="text-2xl font-extrabold text-gray-900">{group.region}</h2>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto rounded-2xl shadow-md border border-gray-200">
+              <table class="w-full text-sm text-left">
+                <thead>
+                  <tr class="bg-green-800 text-white">
+                    <th class="px-5 py-4 font-semibold w-16">No.</th>
+                    <th class="px-5 py-4 font-semibold">Name of Confederation</th>
+                    <th class="px-5 py-4 font-semibold">President</th>
+                    <th class="px-5 py-4 font-semibold">Rural Bank</th>
+                    <th class="px-5 py-4 font-semibold">Office Contact Nos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {group.items.map((row, i) => (
+                    <tr class={`border-t border-gray-100 transition-colors hover:bg-green-50 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
+                      <td class="px-5 py-4 font-bold text-green-700">{row.no}</td>
+                      <td class="px-5 py-4 font-medium text-gray-900">{row.name}</td>
+                      <td class="px-5 py-4 text-gray-700">{row.president}</td>
+                      <td class="px-5 py-4 text-gray-700">{row.ruralBank}</td>
+                      <td class="px-5 py-4 text-gray-600 whitespace-nowrap">{row.contact}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Explore our Federations</h2>
+          <p class="text-green-200 text-sm">See the full list of RBAP federations across Luzon, Visayas, and Mindanao.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a href="/about/federations" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm">
+            View Federations
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+          <a href="/" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/50 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white transition-all duration-200 text-sm">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #4ade80; opacity: 0.07; }
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+</style>

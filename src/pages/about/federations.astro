@@ -1,0 +1,208 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+
+const federations = [
+  {
+    region: "Luzon",
+    items: [
+      { no: 1,  name: "La Union Chamber of Rural Bankers",                                            president: "Ives Jesus II Nisce",                  ruralBank: "Rang-ay Bank",                                                         contact: "(072) 242-5661 to 63 ; 0917-329-4802" },
+      { no: 2,  name: "Association of Pangasinan Rural Banks, Inc. (APRUB)",                          president: "Atty. Donna Nikki De Leon Vargas",     ruralBank: "Rural Bank of Anda (Pangasinan), Inc.",                                contact: "(075) 636-3219 ; 0933-870-6833 ; (075) 662-1802" },
+      { no: 3,  name: "Federation of Baguio, Benguet, Mt. Province Rural and Cooperative Banks",      president: "Atty. Krisanto Bela-o",                ruralBank: "Cooperative Bank of Benguet",                                          contact: "(074) 620-5903 ; (074) 424-8708 ; (074) 422-2469" },
+      { no: 4,  name: "Federation of Cagayan Valley Rural and Countryside Finance Institutions (FCVRCFI INC.)", president: "Christine B. Wangdali",       ruralBank: "Bangko Montañosa, Inc. (A Rural Bank)",                               contact: "09989720820" },
+      { no: 5,  name: "Zambales Federation of Rural Bankers",                                         president: "Joni Mendegorin",                      ruralBank: "Rural Bank of Cabangan, Inc. (Zambales)",                             contact: "(047) 603-0075 ; 0912-591-6684" },
+      { no: 6,  name: "Bataan Federation of Rural Banks",                                             president: "Ricardo S. Jorge",                     ruralBank: "Rural Bank of Abucay (Bataan), Inc.",                                  contact: "(047) 244-4145 ; 0915-4281-152" },
+      { no: 7,  name: "Bulacan Federation of Rural Banks, Inc.",                                      president: "Mercedes S. Coloma",                   ruralBank: "Gateway Rural Bank, Inc.",                                            contact: "(044) 802-5717 ; 0922-884-1270" },
+      { no: 8,  name: "Pampanga Federation of Rural Bankers",                                         president: "Ma. Esperanza T. Sumera",              ruralBank: "San Bartolome Rural Bank, Inc.",                                      contact: "09173089777" },
+      { no: 9,  name: "Nueva Ecija Federation of Rural Banks, Inc.",                                  president: "Crisostomo L. Martin",                 ruralBank: "Rural Bank of Quezon (N.E.), Inc.",                                   contact: "(044) 803-1422 ; 09988633144" },
+      { no: 10, name: "Tarlac Federation of Rural Bankers",                                           president: "Ernesto E. Catacutan",                 ruralBank: "Camiling Rural Bank, Inc.",                                           contact: "(045) 934-0182" },
+      { no: 11, name: "Rizal Federation of Rural Bankers",                                            president: "Jane G. Sto. Domingo",                 ruralBank: "Rural Bank of Antipolo, Inc.",                                        contact: "8697-0232 ; 09279137116" },
+      { no: 12, name: "Federation of Batangas Rural Bankers",                                         president: "Enrique Jose C. Estrada",              ruralBank: "Summit Rural Bank of Lipa City, Inc.",                                contact: "043-7572513 ; 043-4036499 ; 09171624490" },
+      { no: 13, name: "Federation of Laguna Rural Bankers",                                           president: "Almira Resureccion",                   ruralBank: "Rural Bank of Bay, Inc.",                                             contact: "(049) 536-0013" },
+      { no: 14, name: "Quezon Federation of Rural Bankers",                                           president: "Jose Paolo M. Palileo",                ruralBank: "Bayanihan Bank, Inc. - formerly Rural Bank of Atimonan, Inc.",         contact: "042-316-5337 ; 09199131539" },
+      { no: 15, name: "Cavite Federation of Rural Banks, Inc.",                                       president: "Catalina Bagsic",                      ruralBank: "First Integrity Bank",                                                contact: "(02) 861-6053 ; (046) 513-0884 ; 0917-689-9484" },
+      { no: 16, name: "Rural Bankers Chamber of Oriental Mindoro (RUBACOM)",                          president: "Rosalie Larracas",                     ruralBank: "Rural Bank of Socorro (Oriental Mindoro), Inc.",                      contact: "09177704969" },
+      { no: 17, name: "Federation of Metro Manila Rural Banks, Inc. (FOMMRBI)",                       president: "Florinda Dela Cruz",                   ruralBank: "East West Rural Bank, Inc.",                                          contact: "082-2387700 ; 09189218362" },
+      { no: 18, name: "Bicol Federation of Rural Banks",                                              president: "Angelica E. Torres",                   ruralBank: "Banco San Vicente, Inc. (A Rural Bank)",                              contact: "(054) 603-7169 ; 0917-813-9544" },
+    ],
+  },
+  {
+    region: "Visayas",
+    items: [
+      { no: 19, name: "Chamber of Iloilo Rural Banks, Inc.",                                          president: "Ma. Daisy G. Nafarrete",               ruralBank: "Rural Bank of Calinog, Inc.",                                         contact: "330-1492 ; 09306488464" },
+      { no: 20, name: "Negros Occidental Federation of Rural Bankers, Inc. (NOFRB)",                  president: "Mary Agnes L. Montelibano",            ruralBank: "Rural Bank of Bacolod City, Inc.",                                   contact: "034-4345363 ; 034-4332704 ; 09274700796" },
+      { no: 21, name: "Cebu Association of Rural Banks, Inc.",                                        president: "Expedito S. Bollozos",                 ruralBank: "First Philippine Partners Bank, Inc. (A Rural Bank)",                 contact: "(032) 255-0458 ; 09661532438" },
+      { no: 22, name: "Federation of Rural Bankers in Negros Oriental and Siquijor (FRBNOS)",         president: "INACTIVE",                             ruralBank: "INACTIVE",                                                           contact: "INACTIVE", inactive: true },
+      { no: 23, name: "Leyte-Samar Federation of Rural Banks",                                        president: "Angel Ignacio Veloso III",             ruralBank: "Rural Bank of Malitbog (Southern Leyte), Inc.",                      contact: "053-589-3884 ; 09175700256" },
+    ],
+  },
+  {
+    region: "Mindanao",
+    items: [
+      { no: 24, name: "Zamboanga del Norte Federation of Rural Bankers (ZNFRB)",                      president: "Michael Angelo S. Hamoy",              ruralBank: "Community Rural Bank of Dapitan City",                               contact: "065-917-8463 ; 09093265770" },
+      { no: 25, name: "Misamis Oriental-Bukidnon-Camiguin-Iligan-Federation of Rural Banks (MOBCI)", president: "Cesar G. Magallanes",                  ruralBank: "RBT Bank",                                                            contact: "088-557-5115 ; 09176338097" },
+      { no: 26, name: "Northwestern Mindanao Federation of Rural Banks",                              president: "Nathaniel Pepito",                     ruralBank: "Panguil Bay Rural Bank",                                              contact: "088-521-2385 ; 09479984768" },
+      { no: 27, name: "CARAGA Rural Bankers Federation",                                              president: "Wilberto C. Tupas",                    ruralBank: "Rural Bank of Lanuza (Surigao del Sur), Inc.",                       contact: "086-212-5286 ; 09105825778" },
+      { no: 28, name: "Davao Federation of Rural Bankers, Inc.",                                      president: "Giovanni D. Gabriento",                ruralBank: "Rural Bank of Digos, Inc.",                                           contact: "82-553-4641 ; 09123695984" },
+    ],
+  },
+];
+
+const regionColors: Record<string, { bar: string; header: string; badge: string; badgeText: string }> = {
+  Luzon:    { bar: "bg-green-600",   header: "bg-green-800",   badge: "bg-green-50 border-green-200 text-green-700",   badgeText: "text-green-700" },
+  Visayas:  { bar: "bg-teal-600",    header: "bg-teal-800",    badge: "bg-teal-50 border-teal-200 text-teal-700",     badgeText: "text-teal-700" },
+  Mindanao: { bar: "bg-emerald-600", header: "bg-emerald-800", badge: "bg-emerald-50 border-emerald-200 text-emerald-700", badgeText: "text-emerald-700" },
+};
+---
+
+<Layout
+  title="Federations — Rural Bankers Association of the Philippines"
+  description="View the complete list of RBAP Federations across Luzon, Visayas, and Mindanao — the regional federations championing rural banking in their areas."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-green-900 via-green-800 to-emerald-800 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-green-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-green-400">About RBAP</span>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Federations</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-green-300 animate-pulse"></div>
+          <span class="text-green-100 text-sm font-medium tracking-wide">About RBAP</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Federations
+        </h1>
+        <p class="text-lg text-green-100 max-w-2xl leading-relaxed">
+          RBAP Federations are the backbone of regional rural banking advocacy — uniting member banks across provinces to collectively serve their communities better.
+        </p>
+
+        <!-- Quick stats -->
+        <div class="flex flex-wrap gap-6 mt-10">
+          {[
+            { label: "Total Federations", value: "28" },
+            { label: "Luzon", value: "18" },
+            { label: "Visayas", value: "5" },
+            { label: "Mindanao", value: "5" },
+          ].map(stat => (
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3 text-center border border-white/20">
+              <div class="text-2xl font-extrabold text-white">{stat.value}</div>
+              <div class="text-green-200 text-xs mt-0.5">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-gray-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Jump links -->
+    <div class="bg-white border-b border-gray-100 sticky top-[64px] z-40 shadow-sm">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center gap-1 overflow-x-auto py-3 no-scrollbar">
+          {["Luzon", "Visayas", "Mindanao"].map(region => (
+            <a
+              href={`#${region.toLowerCase()}`}
+              class="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold text-gray-600 hover:bg-green-50 hover:text-green-700 transition-colors border border-transparent hover:border-green-200"
+            >
+              {region}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Federation Tables -->
+    <section class="py-20 bg-gray-50" id="federation-list">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 space-y-20">
+
+        {federations.map((group) => {
+          const colors = regionColors[group.region];
+          return (
+            <div class="fade-in" id={group.region.toLowerCase()}>
+              <!-- Region header -->
+              <div class="flex items-center gap-4 mb-6">
+                <div class={`w-1.5 h-8 ${colors.bar} rounded-full`}></div>
+                <h2 class="text-2xl font-extrabold text-gray-900">{group.region}</h2>
+                <span class={`ml-2 text-xs font-bold px-3 py-1 rounded-full border ${colors.badge}`}>
+                  {group.items.length} Federation{group.items.length !== 1 ? "s" : ""}
+                </span>
+              </div>
+
+              <!-- Table -->
+              <div class="overflow-x-auto rounded-2xl shadow-md border border-gray-200">
+                <table class="w-full text-sm text-left">
+                  <thead>
+                    <tr class={`${colors.header} text-white`}>
+                      <th class="px-5 py-4 font-semibold w-14">No.</th>
+                      <th class="px-5 py-4 font-semibold min-w-[220px]">Name of Federation</th>
+                      <th class="px-5 py-4 font-semibold min-w-[180px]">Federation President</th>
+                      <th class="px-5 py-4 font-semibold min-w-[200px]">Rural Bank</th>
+                      <th class="px-5 py-4 font-semibold min-w-[180px]">Office Contact Nos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {group.items.map((row, i) => (
+                      <tr class={`border-t border-gray-100 transition-colors ${row.inactive ? "opacity-50" : "hover:bg-green-50"} ${i % 2 === 0 ? "bg-white" : "bg-gray-50/60"}`}>
+                        <td class={`px-5 py-4 font-bold ${colors.badgeText}`}>{row.no}</td>
+                        <td class="px-5 py-4 font-medium text-gray-900">
+                          {row.name}
+                          {row.inactive && <span class="ml-2 text-xs bg-gray-200 text-gray-500 px-2 py-0.5 rounded-full">Inactive</span>}
+                        </td>
+                        <td class="px-5 py-4 text-gray-700">{row.president}</td>
+                        <td class="px-5 py-4 text-gray-700">{row.ruralBank}</td>
+                        <td class="px-5 py-4 text-gray-600">{row.contact}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          );
+        })}
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Ready to be part of RBAP?</h2>
+          <p class="text-green-200 text-sm">Join hundreds of rural banks championing financial inclusion across the Philippines.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm">
+            Become a Member
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+          <a href="/" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/50 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white transition-all duration-200 text-sm">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #4ade80; opacity: 0.07; }
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

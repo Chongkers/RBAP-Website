@@ -1,0 +1,295 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+
+const officers = [
+  {
+    name: "Atty. Patrick Bryan E. Absin",
+    position: "President",
+    tier: "top",
+  },
+  {
+    name: "Mercedes S. Coloma",
+    position: "Vice President for Luzon",
+    tier: "vp",
+  },
+  {
+    name: "Dr. Myra Lynn G. Melisimo",
+    position: "Vice President for Visayas",
+    tier: "vp",
+  },
+  {
+    name: "Engr. Richard T. Concha",
+    position: "Vice President for Mindanao",
+    tier: "vp",
+  },
+  {
+    name: "Danny Boy M. Antonio",
+    position: "Treasurer",
+    tier: "vp",
+  },
+  {
+    name: "Atty. Charmaine Torres-Castro",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Paolo N. Petines",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Atty. Clifton James F. Sawit",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Catalina M. Bagsic",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Atanacio A. Panahon II",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Angelica E. Torres",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Maria Antonia R. Abello",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Angel Ignacio L. Veloso III",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Richelyn A. Carmelotes",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Jan S. Ced",
+    position: "Director",
+    tier: "director",
+  },
+  {
+    name: "Atty. Ruben O. Purisima",
+    position: "Corporate Secretary",
+    tier: "exec",
+  },
+  {
+    name: "Concepcion A. Garcia",
+    position: "Executive Director",
+    tier: "exec",
+  },
+];
+
+const positionBadge: Record<string, string> = {
+  top: "bg-green-700 text-white",
+  vp: "bg-green-100 text-green-800",
+  director: "bg-gray-100 text-gray-700",
+  exec: "bg-emerald-100 text-emerald-800",
+};
+
+const initials = (name: string) => {
+  return name
+    .replace(/^(Atty\.|Dr\.|Engr\.)\s*/i, "")
+    .split(" ")
+    .filter(Boolean)
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+};
+
+const avatarColors = [
+  "from-green-700 to-green-500",
+  "from-emerald-700 to-emerald-500",
+  "from-teal-700 to-teal-500",
+  "from-green-800 to-emerald-600",
+  "from-green-600 to-teal-500",
+];
+---
+
+<Layout
+  title="Officers & Employees — Rural Bankers Association of the Philippines"
+  description="Meet the RBAP Board of Directors, Officers, and Employees leading the Rural Bankers Association of the Philippines."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-green-900 via-green-800 to-emerald-800 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-green-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-green-400">About RBAP</span>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Officers &amp; Employees</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-green-300 animate-pulse"></div>
+          <span class="text-green-100 text-sm font-medium tracking-wide">About RBAP</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Officers &amp; Employees
+        </h1>
+        <p class="text-lg text-green-100 max-w-2xl leading-relaxed">
+          Meet the dedicated leaders and staff of the Rural Bankers Association of the Philippines who champion rural banking and financial inclusion every day.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-gray-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Board Photo -->
+    <section class="py-16 bg-gray-50" id="board-photo">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-10 fade-in">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-green-600 bg-green-50 border border-green-100 px-4 py-1.5 rounded-full mb-4">Board of Directors</span>
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">RBAP Board of Directors</h2>
+          <p class="text-gray-500 max-w-xl mx-auto">The elected leaders guiding RBAP's mission to champion rural banks and advance financial inclusion across the Philippines.</p>
+        </div>
+
+        <!-- Org Chart Grid -->
+        <div class="space-y-8 fade-in">
+
+          <!-- President -->
+          <div class="flex justify-center">
+            {officers.filter(o => o.tier === "top").map((o, i) => (
+              <div class="officer-card group flex flex-col items-center text-center w-44">
+                <div class={`w-24 h-24 rounded-2xl bg-gradient-to-br ${avatarColors[i % avatarColors.length]} flex items-center justify-center text-white text-2xl font-extrabold shadow-lg group-hover:scale-105 transition-transform duration-300 border-4 border-white ring-2 ring-green-300`}>
+                  {initials(o.name)}
+                </div>
+                <div class="mt-3 px-2">
+                  <p class="text-sm font-bold text-gray-900 leading-snug">{o.name}</p>
+                  <span class={`inline-block mt-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full ${positionBadge[o.tier]}`}>{o.position}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Connector line -->
+          <div class="flex justify-center">
+            <div class="w-px h-8 bg-green-300"></div>
+          </div>
+
+          <!-- VPs & Treasurer -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            {officers.filter(o => o.tier === "vp").map((o, i) => (
+              <div class="officer-card group flex flex-col items-center text-center">
+                <div class={`w-20 h-20 rounded-2xl bg-gradient-to-br ${avatarColors[(i + 1) % avatarColors.length]} flex items-center justify-center text-white text-lg font-extrabold shadow-md group-hover:scale-105 transition-transform duration-300 border-4 border-white ring-2 ring-green-200`}>
+                  {initials(o.name)}
+                </div>
+                <div class="mt-3 px-1">
+                  <p class="text-xs font-bold text-gray-900 leading-snug">{o.name}</p>
+                  <span class={`inline-block mt-1.5 text-[10px] font-semibold px-2 py-0.5 rounded-full ${positionBadge[o.tier]}`}>{o.position}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Divider -->
+          <div class="flex items-center gap-4 max-w-3xl mx-auto">
+            <div class="flex-1 h-px bg-green-200"></div>
+            <span class="text-xs font-bold uppercase tracking-widest text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-100">Directors</span>
+            <div class="flex-1 h-px bg-green-200"></div>
+          </div>
+
+          <!-- Directors -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-5">
+            {officers.filter(o => o.tier === "director").map((o, i) => (
+              <div class="officer-card group flex flex-col items-center text-center" style={`animation-delay: ${i * 60}ms`}>
+                <div class={`w-16 h-16 rounded-xl bg-gradient-to-br ${avatarColors[i % avatarColors.length]} flex items-center justify-center text-white text-base font-extrabold shadow group-hover:scale-105 transition-transform duration-300 border-4 border-white ring-1 ring-gray-200`}>
+                  {initials(o.name)}
+                </div>
+                <div class="mt-2 px-1">
+                  <p class="text-xs font-bold text-gray-900 leading-snug">{o.name}</p>
+                  <span class={`inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full ${positionBadge[o.tier]}`}>{o.position}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Divider -->
+          <div class="flex items-center gap-4 max-w-3xl mx-auto">
+            <div class="flex-1 h-px bg-emerald-200"></div>
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Executive Staff</span>
+            <div class="flex-1 h-px bg-emerald-200"></div>
+          </div>
+
+          <!-- Executive staff -->
+          <div class="flex flex-wrap justify-center gap-8">
+            {officers.filter(o => o.tier === "exec").map((o, i) => (
+              <div class="officer-card group flex flex-col items-center text-center w-40">
+                <div class={`w-16 h-16 rounded-xl bg-gradient-to-br ${avatarColors[(i + 2) % avatarColors.length]} flex items-center justify-center text-white text-base font-extrabold shadow group-hover:scale-105 transition-transform duration-300 border-4 border-white ring-2 ring-emerald-200`}>
+                  {initials(o.name)}
+                </div>
+                <div class="mt-2 px-1">
+                  <p class="text-xs font-bold text-gray-900 leading-snug">{o.name}</p>
+                  <span class={`inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full ${positionBadge[o.tier]}`}>{o.position}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <!-- Note about photos -->
+        <p class="text-center text-gray-400 text-xs mt-12 italic">
+          Official board photos will be displayed here. Contact RBAP secretariat to update official portraits.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Connect with RBAP</h2>
+          <p class="text-green-200 text-sm">Reach out to our leadership team or explore membership opportunities.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 shrink-0">
+          <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm">
+            Contact Us
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+          <a href="/" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/50 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white transition-all duration-200 text-sm">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #4ade80; opacity: 0.07; }
+
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .officer-card {
+    opacity: 0; transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+</style>

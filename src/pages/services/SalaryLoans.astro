@@ -1,0 +1,163 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+---
+
+<Layout
+  title="Salary Loans — RBAP"
+  description="RBAP member rural banks provide convenient salary loan facilities for employees with competitive rates and flexible repayment terms."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-blue-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-blue-400">Programs & Services</span>
+          <svg class="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Salary Loans</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-blue-300 animate-pulse"></div>
+          <span class="text-blue-100 text-sm font-medium tracking-wide">RB Products & Services</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Salary Loans
+        </h1>
+        <p class="text-lg text-blue-100 max-w-2xl leading-relaxed">
+          Fast, affordable salary-based lending for employees — delivered through RBAP's trusted network of rural banks across the Philippines.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+
+          <div class="lg:col-span-2 space-y-8">
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">About Salary Loans</h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Salary loans offered by RBAP member rural banks give employed individuals — from government workers to private sector employees — access to short-term credit using their monthly salary as the primary basis for loan approval. These loans are designed to address personal financial needs quickly and conveniently.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                With a simplified application process and direct salary deduction repayment options, rural bank salary loans are a practical alternative to high-interest informal lenders.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Key Features</h2>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                  { title: "Loanable Amount", desc: "Borrow up to a multiple of your monthly salary — typically 1 to 6 months gross pay, subject to bank policy and employer accreditation." },
+                  { title: "Competitive Interest Rates", desc: "Lower rates compared to credit cards and informal lending, with transparent fee structures." },
+                  { title: "Salary Deduction Repayment", desc: "Convenient auto-deduction from payroll eliminates the hassle of manual payments and reduces default risk." },
+                  { title: "Minimal Requirements", desc: "Basic employment documents, payslips, and a valid ID are typically all that is needed to apply." },
+                ].map(f => (
+                  <div class="bg-blue-50 border border-blue-100 rounded-xl p-5">
+                    <h3 class="font-bold text-gray-900 mb-1">{f.title}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Who Can Apply?</h2>
+              <ul class="space-y-3">
+                {[
+                  "Regular government employees (national and local government units)",
+                  "Private sector employees under accredited companies",
+                  "Teachers, healthcare workers, and uniformed personnel",
+                  "SSS and GSIS members with verifiable monthly income",
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                      <svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-gray-600 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <div class="bg-blue-800 rounded-2xl p-6 text-white">
+              <h3 class="font-extrabold text-lg mb-3">Quick Facts</h3>
+              <div class="space-y-3 text-sm">
+                {[
+                  { label: "Loan Basis", value: "Monthly salary" },
+                  { label: "Loan Term", value: "6 – 24 months" },
+                  { label: "Repayment", value: "Salary deduction" },
+                  { label: "Regulated by", value: "Bangko Sentral ng Pilipinas" },
+                ].map(f => (
+                  <div class="flex justify-between border-b border-white/20 pb-3">
+                    <span class="text-blue-200">{f.label}</span>
+                    <span class="font-semibold text-right">{f.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+              <h3 class="font-extrabold text-gray-900 mb-3">Other Services</h3>
+              <ul class="space-y-2">
+                {[
+                  { label: "Microfinance Loans & Deposits", href: "/services/MicrofinanceLoansDeposits" },
+                  { label: "Agricultural Loans", href: "/services/AgriculturalLoans" },
+                  { label: "Deposit Services", href: "/services/DepositServices" },
+                  { label: "Payment of Bills", href: "/services/PaymentofBills" },
+                  { label: "Remittances", href: "/services/Remittances" },
+                ].map(s => (
+                  <li>
+                    <a href={s.href} class="flex items-center gap-2 text-sm text-gray-700 hover:text-green-700 font-medium transition-colors">
+                      <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Find a Rural Bank Near You</h2>
+          <p class="text-green-200 text-sm">Locate an RBAP member bank offering salary loan services in your province.</p>
+        </div>
+        <a href="/locate-a-bank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm shrink-0">
+          Locate a Bank
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #93c5fd; opacity: 0.07; }
+</style>
