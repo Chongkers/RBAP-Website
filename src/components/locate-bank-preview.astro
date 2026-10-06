@@ -1,0 +1,139 @@
+---
+// Locate a Bank preview/teaser section for the home page
+---
+
+<section class="relative bg-gradient-to-br from-green-900 via-green-800 to-green-700 overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+
+  <div class="relative max-w-screen-xl mx-auto px-4 py-16 lg:py-24">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+
+      <!-- Text side -->
+      <div class="flex-1 text-white text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6 backdrop-blur-sm">
+          <svg class="w-4 h-4 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+          </svg>
+          Branch Locator
+        </div>
+
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
+          Find a Rural Bank
+          <span class="block text-green-300">Near You</span>
+        </h2>
+
+        <p class="text-green-100 text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
+          Explore our network of rural banks and cooperative banks across the Philippines.
+          Use our interactive map to find the nearest branch in your province or city.
+        </p>
+
+        <!-- Stats -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-6 mb-10">
+          <div class="text-center">
+            <div class="text-3xl font-extrabold text-white">500+</div>
+            <div class="text-green-300 text-sm mt-0.5">Member Banks</div>
+          </div>
+          <div class="w-px bg-white/20 hidden sm:block"></div>
+          <div class="text-center">
+            <div class="text-3xl font-extrabold text-white">81</div>
+            <div class="text-green-300 text-sm mt-0.5">Provinces</div>
+          </div>
+          <div class="w-px bg-white/20 hidden sm:block"></div>
+          <div class="text-center">
+            <div class="text-3xl font-extrabold text-white">1,700+</div>
+            <div class="text-green-300 text-sm mt-0.5">Branch Offices</div>
+          </div>
+        </div>
+
+        <a
+          href="/locate-a-bank"
+          id="locate-bank-cta"
+          class="inline-flex items-center gap-2 bg-white text-green-800 font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-green-50 hover:shadow-xl transition-all duration-300 group"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+          </svg>
+          Open Branch Locator
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Map preview side -->
+      <div class="flex-1 w-full max-w-lg lg:max-w-none">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
+          <!-- Overlay with click-through -->
+          <a href="/locate-a-bank" class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[1px]">
+            <span class="bg-white text-green-800 font-bold px-6 py-3 rounded-xl shadow-lg flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+              </svg>
+              View Full Map
+            </span>
+          </a>
+
+          <div id="preview-map" class="w-full h-72 bg-gray-200 pointer-events-none"></div>
+        </div>
+
+        <p class="text-green-200 text-xs text-center mt-3 opacity-75">
+          Click to open the interactive branch locator
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const previewMap = (window as any).L?.map('preview-map', {
+      center: [12.5, 122.0],
+      zoom: 5,
+      zoomControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      touchZoom: false,
+      attributionControl: false,
+    });
+
+    if (!previewMap) return;
+
+    (window as any).L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(previewMap);
+
+    const sampleBanks = [
+      { lat: 14.5995, lng: 120.9842 },
+      { lat: 10.3157, lng: 123.8854 },
+      { lat: 7.1907, lng: 125.4553 },
+      { lat: 16.4023, lng: 120.5960 },
+      { lat: 10.7202, lng: 122.5621 },
+      { lat: 8.4542, lng: 124.6319 },
+      { lat: 13.1391, lng: 123.7438 },
+      { lat: 15.1797, lng: 120.6209 },
+    ];
+
+    const icon = (window as any).L.divIcon({
+      className: '',
+      html: `<div style="width:10px;height:10px;background:#16a34a;border:2px solid white;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.4)"></div>`,
+      iconSize: [10, 10],
+      iconAnchor: [5, 5],
+    });
+
+    sampleBanks.forEach(b => {
+      (window as any).L.marker([b.lat, b.lng], { icon }).addTo(previewMap);
+    });
+  });
+</script>

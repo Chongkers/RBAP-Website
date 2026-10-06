@@ -1,0 +1,163 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+---
+
+<Layout
+  title="Remittances — RBAP"
+  description="RBAP member rural banks provide fast and reliable domestic and international remittance services reaching even the most remote areas of the Philippines."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-cyan-700 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-teal-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-teal-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-teal-400">Programs & Services</span>
+          <svg class="w-3 h-3 text-teal-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Remittances</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-teal-300 animate-pulse"></div>
+          <span class="text-teal-100 text-sm font-medium tracking-wide">RB Products & Services</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Remittances
+        </h1>
+        <p class="text-lg text-teal-100 max-w-2xl leading-relaxed">
+          Fast, secure, and affordable money transfers — domestic and international — through RBAP's network of rural banks that reach even the most remote corners of the Philippines.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+
+          <div class="lg:col-span-2 space-y-8">
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Connecting Filipinos Everywhere</h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Remittances are a lifeline for millions of Filipino families. Whether it's an OFW sending money home from abroad or a city worker supporting relatives in the province, RBAP member rural banks serve as a trusted last-mile delivery point for money transfers.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                Many rural banks are accredited agents of major remittance networks, enabling them to pay out both domestic and international transfers in barangays and municipalities where commercial banks have no presence.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Types of Remittance Services</h2>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                  { title: "OFW International Remittances", desc: "Payout of remittances from overseas Filipino workers (OFWs) through partnerships with Western Union, MoneyGram, and local remittance companies." },
+                  { title: "Domestic Money Transfers", desc: "Interbank fund transfers and domestic remittance payout services linking urban senders to rural recipients quickly and affordably." },
+                  { title: "Mobile & Electronic Remittances", desc: "Integration with GCash, Maya, and other e-wallet platforms enabling digital fund delivery to rural bank account holders." },
+                  { title: "Pensioner Payouts", desc: "Disbursement of SSS, GSIS, and other government pension and social protection benefits through rural bank branches." },
+                ].map(f => (
+                  <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                    <h3 class="font-bold text-gray-900 mb-1">{f.title}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Key Benefits</h2>
+              <ul class="space-y-3">
+                {[
+                  "Reach recipients in remote municipalities where no other banks operate",
+                  "Competitive exchange rates and low transaction fees",
+                  "Fast payout — often same-day or within hours of sending",
+                  "Trusted, regulated rural banking institutions for peace of mind",
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 w-5 h-5 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
+                      <svg class="w-3 h-3 text-teal-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-gray-600 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <div class="bg-teal-800 rounded-2xl p-6 text-white">
+              <h3 class="font-extrabold text-lg mb-3">Quick Facts</h3>
+              <div class="space-y-3 text-sm">
+                {[
+                  { label: "Service Type", value: "Domestic & international" },
+                  { label: "Partners", value: "Western Union, MoneyGram & more" },
+                  { label: "Payout Speed", value: "Same-day to 24 hours" },
+                  { label: "Regulated by", value: "BSP" },
+                ].map(f => (
+                  <div class="flex justify-between border-b border-white/20 pb-3">
+                    <span class="text-teal-200">{f.label}</span>
+                    <span class="font-semibold text-right">{f.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+              <h3 class="font-extrabold text-gray-900 mb-3">Other Services</h3>
+              <ul class="space-y-2">
+                {[
+                  { label: "Microfinance Loans & Deposits", href: "/services/MicrofinanceLoansDeposits" },
+                  { label: "Salary Loans", href: "/services/SalaryLoans" },
+                  { label: "Agricultural Loans", href: "/services/AgriculturalLoans" },
+                  { label: "Deposit Services", href: "/services/DepositServices" },
+                  { label: "Payment of Bills", href: "/services/PaymentofBills" },
+                ].map(s => (
+                  <li>
+                    <a href={s.href} class="flex items-center gap-2 text-sm text-gray-700 hover:text-green-700 font-medium transition-colors">
+                      <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Find a Rural Bank Near You</h2>
+          <p class="text-green-200 text-sm">Locate an RBAP member bank that offers remittance payout services in your area.</p>
+        </div>
+        <a href="/locate-a-bank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm shrink-0">
+          Locate a Bank
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #5eead4; opacity: 0.07; }
+</style>

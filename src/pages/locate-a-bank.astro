@@ -1,0 +1,324 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.astro';
+import Footer from '../components/footer.astro';
+---
+
+<Layout
+  title="Locate a Bank - Rural Bankers Association of the Philippines"
+  description="Find rural banks and cooperative banks near you across the Philippines. Use our interactive map to locate RBAP member bank branches by region, province, or city."
+>
+  <Navbar />
+  <main>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white py-14 px-4">
+      <div class="max-w-screen-xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-4 backdrop-blur-sm">
+          <svg class="w-4 h-4 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+          </svg>
+          Branch Locator
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Locate a Rural Bank</h1>
+        <p class="text-green-100 text-lg max-w-2xl mx-auto">
+          Find RBAP member banks and branches anywhere in the Philippines. Click on a pin to view branch details.
+        </p>
+      </div>
+    </section>
+
+    <!-- Map + Sidebar layout -->
+    <section class="bg-gray-50 min-h-[calc(100vh-200px)]" style="isolation: isolate;">
+      <div class="max-w-screen-xl mx-auto px-4 py-8">
+
+        <!-- Search & Filter Bar -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-6 flex flex-col sm:flex-row gap-3">
+          <div class="flex-1 relative">
+            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input
+              id="bank-search"
+              type="text"
+              placeholder="Search by bank name, city, or province..."
+              class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            />
+          </div>
+          <select
+            id="region-filter"
+            class="px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 bg-white min-w-[180px]"
+          >
+            <option value="">All Regions</option>
+            <option value="NCR">NCR – Metro Manila</option>
+            <option value="R1">Region I – Ilocos</option>
+            <option value="R2">Region II – Cagayan Valley</option>
+            <option value="R3">Region III – Central Luzon</option>
+            <option value="R4A">Region IV-A – CALABARZON</option>
+            <option value="R4B">Region IV-B – MIMAROPA</option>
+            <option value="R5">Region V – Bicol</option>
+            <option value="R6">Region VI – Western Visayas</option>
+            <option value="R7">Region VII – Central Visayas</option>
+            <option value="R8">Region VIII – Eastern Visayas</option>
+            <option value="R9">Region IX – Zamboanga Peninsula</option>
+            <option value="R10">Region X – Northern Mindanao</option>
+            <option value="R11">Region XI – Davao</option>
+            <option value="R12">Region XII – SOCCSKSARGEN</option>
+            <option value="R13">Region XIII – Caraga</option>
+            <option value="CAR">CAR – Cordillera</option>
+            <option value="BARMM">BARMM</option>
+          </select>
+          <button
+            id="locate-me-btn"
+            class="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm whitespace-nowrap"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            Near Me
+          </button>
+        </div>
+
+        <!-- Map + List panel -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Bank list panel -->
+          <div class="lg:col-span-1 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col" style="max-height: 620px;">
+            <div class="p-4 border-b border-gray-100 flex items-center justify-between">
+              <h2 class="font-semibold text-gray-800 text-sm">Bank Branches</h2>
+              <span id="bank-count" class="text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded-full">Loading…</span>
+            </div>
+            <div id="bank-list" class="overflow-y-auto flex-1 divide-y divide-gray-50">
+              <!-- Filled dynamically by JS -->
+              <div class="p-8 text-center text-gray-400 text-sm">Loading branches…</div>
+            </div>
+          </div>
+
+          <!-- Map panel -->
+          <div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-sm border border-gray-100" style="height: 620px;">
+            <div id="main-map" class="w-full h-full"></div>
+          </div>
+
+        </div>
+
+        <!-- Info note -->
+        <p class="text-xs text-gray-400 text-center mt-4">
+          Branch data shown is representative. For the most current information, contact RBAP at <a href="tel:+6328921-4184" class="underline hover:text-green-700">(02) 8921-4184</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  // Sample bank data — replace with real API/data source
+  const banks = [
+    { id: 1,  name: "Rural Bank of Batangas",          city: "Batangas City",    province: "Batangas",       region: "R4A", lat: 13.7565, lng: 121.0583, phone: "(043) 723-0000", address: "123 P. Burgos St., Batangas City" },
+    { id: 2,  name: "Rural Bank of Cebu",              city: "Cebu City",        province: "Cebu",           region: "R7",  lat: 10.3157, lng: 123.8854, phone: "(032) 253-1234", address: "456 Colon St., Cebu City" },
+    { id: 3,  name: "Davao Rural Bank",                city: "Davao City",       province: "Davao del Sur",  region: "R11", lat: 7.1907,  lng: 125.4553, phone: "(082) 221-5678", address: "789 Roxas Ave., Davao City" },
+    { id: 4,  name: "Rural Bank of Bulacan",           city: "Malolos",          province: "Bulacan",        region: "R3",  lat: 14.8527, lng: 120.8139, phone: "(044) 791-0001", address: "1 Paseo del Congreso, Malolos" },
+    { id: 5,  name: "Iloilo Rural Bank",               city: "Iloilo City",      province: "Iloilo",         region: "R6",  lat: 10.7202, lng: 122.5621, phone: "(033) 335-1234", address: "22 Iznart St., Iloilo City" },
+    { id: 6,  name: "Cagayan de Oro Rural Bank",       city: "Cagayan de Oro",   province: "Misamis Oriental", region: "R10", lat: 8.4542, lng: 124.6319, phone: "(088) 857-0000", address: "Osmeña St., CDO" },
+    { id: 7,  name: "Legazpi Rural Bank",              city: "Legazpi City",     province: "Albay",          region: "R5",  lat: 13.1391, lng: 123.7438, phone: "(052) 480-1234", address: "Rizal St., Legazpi City" },
+    { id: 8,  name: "Rural Bank of Pampanga",          city: "San Fernando",     province: "Pampanga",       region: "R3",  lat: 15.1797, lng: 120.6209, phone: "(045) 961-0001", address: "MacArthur Hwy, San Fernando" },
+    { id: 9,  name: "Baguio Rural Bank",               city: "Baguio City",      province: "Benguet",        region: "CAR", lat: 16.4023, lng: 120.5960, phone: "(074) 443-0000", address: "Session Rd., Baguio City" },
+    { id: 10, name: "Rural Bank of Zamboanga",         city: "Zamboanga City",   province: "Zamboanga del Sur", region: "R9", lat: 6.9214, lng: 122.0790, phone: "(062) 991-1234", address: "Veterans Ave., Zamboanga City" },
+    { id: 11, name: "Quezon Rural Bank",               city: "Lucena City",      province: "Quezon",         region: "R4A", lat: 13.9322, lng: 121.6167, phone: "(042) 373-0001", address: "Quezon Ave., Lucena City" },
+    { id: 12, name: "Rural Bank of Pangasinan",        city: "Dagupan City",     province: "Pangasinan",     region: "R1",  lat: 16.0433, lng: 120.3328, phone: "(075) 523-0001", address: "AB Fernandez Ave., Dagupan" },
+    { id: 13, name: "Rural Bank of Laguna",            city: "Santa Cruz",       province: "Laguna",         region: "R4A", lat: 14.2784, lng: 121.4148, phone: "(049) 501-1234", address: "Natividad St., Santa Cruz" },
+    { id: 14, name: "Cagayan Valley Rural Bank",       city: "Tuguegarao",       province: "Cagayan",        region: "R2",  lat: 17.6131, lng: 121.7269, phone: "(078) 844-0000", address: "Luna St., Tuguegarao City" },
+    { id: 15, name: "Rural Bank of General Santos",    city: "General Santos",   province: "South Cotabato", region: "R12", lat: 6.1164,  lng: 125.1716, phone: "(083) 552-1234", address: "National Hwy, General Santos City" },
+  ];
+
+  let allBanks = [...banks];
+  let markers: any[] = [];
+  let map: any;
+  let selectedBankId: number | null = null;
+
+  const greenIcon = (selected = false) => (window as any).L.divIcon({
+    className: '',
+    html: `<div style="
+      width:${selected ? 16 : 12}px;
+      height:${selected ? 16 : 12}px;
+      background:${selected ? '#15803d' : '#22c55e'};
+      border:2.5px solid white;
+      border-radius:50%;
+      box-shadow:0 2px 6px rgba(0,0,0,0.35);
+      transition:all 0.2s;
+    "></div>`,
+    iconSize: [selected ? 16 : 12, selected ? 16 : 12],
+    iconAnchor: [selected ? 8 : 6, selected ? 8 : 6],
+  });
+
+  function renderList(filtered: typeof banks) {
+    const list = document.getElementById('bank-list')!;
+    const count = document.getElementById('bank-count')!;
+    count.textContent = `${filtered.length} branch${filtered.length !== 1 ? 'es' : ''}`;
+
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="p-8 text-center text-gray-400 text-sm">No branches found.</div>`;
+      return;
+    }
+
+    list.innerHTML = filtered.map(b => `
+      <button
+        data-id="${b.id}"
+        class="bank-item w-full text-left px-4 py-3.5 hover:bg-green-50 transition-colors flex gap-3 items-start ${selectedBankId === b.id ? 'bg-green-50 border-l-2 border-green-600' : ''}"
+      >
+        <div class="mt-0.5 flex-shrink-0 w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+          <svg class="w-4 h-4 text-green-700" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <div class="font-semibold text-gray-800 text-sm truncate">${b.name}</div>
+          <div class="text-xs text-gray-500 mt-0.5">${b.city}, ${b.province}</div>
+          <div class="text-xs text-green-700 mt-0.5">${b.phone}</div>
+        </div>
+      </button>
+    `).join('');
+
+    list.querySelectorAll('.bank-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const id = parseInt((el as HTMLElement).dataset.id!);
+        selectBank(id);
+      });
+    });
+  }
+
+  function selectBank(id: number) {
+    selectedBankId = id;
+    const bank = banks.find(b => b.id === id);
+    if (!bank || !map) return;
+
+    map.flyTo([bank.lat, bank.lng], 13, { duration: 0.8 });
+
+    // Update marker icons
+    markers.forEach(({ id: mid, marker }) => {
+      marker.setIcon(greenIcon(mid === id));
+    });
+
+    // Update popup
+    const marker = markers.find(m => m.id === id)?.marker;
+    if (marker) {
+      marker.bindPopup(`
+        <div style="min-width:180px">
+          <div style="font-weight:700;font-size:14px;color:#15803d;margin-bottom:4px">${bank.name}</div>
+          <div style="font-size:12px;color:#4b5563;margin-bottom:2px">📍 ${bank.address}</div>
+          <div style="font-size:12px;color:#4b5563;margin-bottom:6px">📞 ${bank.phone}</div>
+          <div style="font-size:11px;color:#9ca3af">${bank.region} · ${bank.province}</div>
+        </div>
+      `).openPopup();
+    }
+
+    // Re-render list to reflect selection
+    const search = (document.getElementById('bank-search') as HTMLInputElement).value.toLowerCase();
+    const region = (document.getElementById('region-filter') as HTMLSelectElement).value;
+    renderList(filterBanks(search, region));
+  }
+
+  function filterBanks(search: string, region: string) {
+    return banks.filter(b => {
+      const matchSearch = !search || b.name.toLowerCase().includes(search) || b.city.toLowerCase().includes(search) || b.province.toLowerCase().includes(search);
+      const matchRegion = !region || b.region === region;
+      return matchSearch && matchRegion;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    map = (window as any).L.map('main-map', {
+      center: [12.5, 122.0],
+      zoom: 6,
+      zoomControl: true,
+    });
+
+    (window as any).L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Add markers
+    banks.forEach(b => {
+      const marker = (window as any).L.marker([b.lat, b.lng], { icon: greenIcon() })
+        .addTo(map)
+        .bindPopup(`
+          <div style="min-width:180px">
+            <div style="font-weight:700;font-size:14px;color:#15803d;margin-bottom:4px">${b.name}</div>
+            <div style="font-size:12px;color:#4b5563;margin-bottom:2px">📍 ${b.address}</div>
+            <div style="font-size:12px;color:#4b5563;margin-bottom:6px">📞 ${b.phone}</div>
+            <div style="font-size:11px;color:#9ca3af">${b.region} · ${b.province}</div>
+          </div>
+        `);
+
+      marker.on('click', () => selectBank(b.id));
+      markers.push({ id: b.id, marker });
+    });
+
+    renderList(banks);
+
+    // Search
+    document.getElementById('bank-search')?.addEventListener('input', (e) => {
+      const search = (e.target as HTMLInputElement).value.toLowerCase();
+      const region = (document.getElementById('region-filter') as HTMLSelectElement).value;
+      renderList(filterBanks(search, region));
+    });
+
+    // Region filter
+    document.getElementById('region-filter')?.addEventListener('change', (e) => {
+      const region = (e.target as HTMLSelectElement).value;
+      const search = (document.getElementById('bank-search') as HTMLInputElement).value.toLowerCase();
+      const filtered = filterBanks(search, region);
+      renderList(filtered);
+
+      if (region && filtered.length > 0) {
+        const bounds = (window as any).L.latLngBounds(filtered.map((b: any) => [b.lat, b.lng]));
+        map.fitBounds(bounds, { padding: [40, 40] });
+      } else {
+        map.setView([12.5, 122.0], 6);
+      }
+    });
+
+    // Near Me
+    document.getElementById('locate-me-btn')?.addEventListener('click', () => {
+      if (!navigator.geolocation) return;
+      navigator.geolocation.getCurrentPosition(pos => {
+        const { latitude, longitude } = pos.coords;
+        map.flyTo([latitude, longitude], 11, { duration: 1 });
+
+        (window as any).L.circleMarker([latitude, longitude], {
+          radius: 8, color: '#1d4ed8', fillColor: '#3b82f6', fillOpacity: 0.7, weight: 2,
+        }).addTo(map).bindPopup('Your location').openPopup();
+
+        // Sort by distance
+        function dist(a: number, b: number, c: number, d: number) {
+          return Math.sqrt((a - c) ** 2 + (b - d) ** 2);
+        }
+        const sorted = [...banks].sort((a, b) => dist(latitude, longitude, a.lat, a.lng) - dist(latitude, longitude, b.lat, b.lng));
+        renderList(sorted);
+      }, () => alert('Could not get your location.'));
+    });
+  });
+</script>
+
+<style>
+  #bank-list::-webkit-scrollbar { width: 4px; }
+  #bank-list::-webkit-scrollbar-track { background: transparent; }
+  #bank-list::-webkit-scrollbar-thumb { background: #d1fae5; border-radius: 4px; }
+  .leaflet-popup-content-wrapper { border-radius: 12px; }
+
+  /* Scope all Leaflet z-indices inside the map container
+     so they never bleed above the sticky navbar */
+  #main-map .leaflet-pane         { z-index: auto; }
+  #main-map .leaflet-tile-pane    { z-index: 2; }
+  #main-map .leaflet-overlay-pane { z-index: 4; }
+  #main-map .leaflet-shadow-pane  { z-index: 5; }
+  #main-map .leaflet-marker-pane  { z-index: 6; }
+  #main-map .leaflet-tooltip-pane { z-index: 7; }
+  #main-map .leaflet-popup-pane   { z-index: 8; }
+  #main-map .leaflet-control       { z-index: 9; }
+</style>

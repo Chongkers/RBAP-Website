@@ -1,0 +1,163 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+---
+
+<Layout
+  title="Payment of Bills — RBAP"
+  description="RBAP-accredited rural banks are authorized to collect SSS payments and other government bills, bringing payment services closer to rural communities."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-orange-800 via-orange-700 to-amber-600 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-orange-200 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-orange-300">Programs & Services</span>
+          <svg class="w-3 h-3 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Payment of Bills</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <div class="w-2 h-2 rounded-full bg-orange-300 animate-pulse"></div>
+          <span class="text-orange-100 text-sm font-medium tracking-wide">RB Products & Services</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Payment of Bills
+        </h1>
+        <p class="text-lg text-orange-100 max-w-2xl leading-relaxed">
+          RBAP-accredited rural banks bring convenient payment collection services for SSS, government bills, and utilities closer to rural communities.
+        </p>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg class="relative block w-full h-12 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 48" preserveAspectRatio="none">
+          <path fill="currentColor" d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+
+          <div class="lg:col-span-2 space-y-8">
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Accredited Payment Collection Banks</h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Select RBAP member rural banks are accredited by the Social Security System (SSS) and other government agencies to serve as official payment collection points. This brings critical payment services to areas where government offices and large commercial banks may have limited or no presence.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                As of May 31, 2005, accredited rural banks are authorized to collect SSS contributions from voluntary and employer-members, making compliance easier for workers and businesses in provincial and rural areas.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">What You Can Pay</h2>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                  { title: "SSS Contributions", desc: "Employee, employer, and voluntary SSS contributions collected through RBAP-accredited rural banks across the Philippines." },
+                  { title: "Government Fees & Dues", desc: "Various government agency fees, licenses, and dues processed at participating rural bank branches." },
+                  { title: "Utility Bills", desc: "Some member banks also facilitate collection of electric, water, and telecommunications bills as authorized local payment centers." },
+                  { title: "Loan Amortizations", desc: "Repayments for government housing loans (Pag-IBIG), SSS salary loans, and other government credit programs." },
+                ].map(f => (
+                  <div class="bg-orange-50 border border-orange-100 rounded-xl p-5">
+                    <h3 class="font-bold text-gray-900 mb-1">{f.title}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-extrabold text-gray-900 mb-4">Why Use Rural Banks for Payments?</h2>
+              <ul class="space-y-3">
+                {[
+                  "Located within rural and provincial communities — fewer travel costs",
+                  "Shorter queues compared to large urban banks and government offices",
+                  "Same-day posting of payments to government systems",
+                  "Trusted local institutions with community accountability",
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <span class="mt-1 w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
+                      <svg class="w-3 h-3 text-orange-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                    <span class="text-gray-600 text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <div class="bg-orange-700 rounded-2xl p-6 text-white">
+              <h3 class="font-extrabold text-lg mb-3">Quick Facts</h3>
+              <div class="space-y-3 text-sm">
+                {[
+                  { label: "Primary Service", value: "SSS contribution collection" },
+                  { label: "Accreditation", value: "SSS-authorized (as of 2005)" },
+                  { label: "Service Hours", value: "Banking hours" },
+                  { label: "Coverage", value: "Provincial & rural areas" },
+                ].map(f => (
+                  <div class="flex justify-between border-b border-white/20 pb-3">
+                    <span class="text-orange-200">{f.label}</span>
+                    <span class="font-semibold text-right">{f.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+              <h3 class="font-extrabold text-gray-900 mb-3">Other Services</h3>
+              <ul class="space-y-2">
+                {[
+                  { label: "Microfinance Loans & Deposits", href: "/services/MicrofinanceLoansDeposits" },
+                  { label: "Salary Loans", href: "/services/SalaryLoans" },
+                  { label: "Agricultural Loans", href: "/services/AgriculturalLoans" },
+                  { label: "Deposit Services", href: "/services/DepositServices" },
+                  { label: "Remittances", href: "/services/Remittances" },
+                ].map(s => (
+                  <li>
+                    <a href={s.href} class="flex items-center gap-2 text-sm text-gray-700 hover:text-green-700 font-medium transition-colors">
+                      <svg class="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Find an Accredited Bank Near You</h2>
+          <p class="text-green-200 text-sm">Locate an RBAP member bank authorized to accept your SSS and other bill payments.</p>
+        </div>
+        <a href="/locate-a-bank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm shrink-0">
+          Locate a Bank
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #fdba74; opacity: 0.1; }
+</style>

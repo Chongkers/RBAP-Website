@@ -1,0 +1,45 @@
+---
+const partners = [
+  {
+    name: "M&T Islamic Banking",
+    logo: "/M&T Islamic Banking.png",
+    logoHeight: "h-12",
+    href: "#",
+  },
+  {
+    name: "Ablipay",
+    logo: "/Ablipay.png",
+    logoHeight: "h-9",
+    href: "#",
+  },
+  {
+    name: "Punongbayan & Araullo",
+    logo: "/Punongbayan & Araullo.png",
+    logoHeight: "h-12",
+    href: "#",
+  },
+];
+---
+
+<section class="bg-white border-t border-gray-100">
+  <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
+    <h2 class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 md:text-4xl">
+      You'll be in good company
+    </h2>
+    <div class="grid grid-cols-1 gap-8 text-gray-500 sm:gap-12 sm:grid-cols-3">
+      {partners.map((partner) => (
+        <a
+          href={partner.href}
+          class="flex justify-center items-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+          aria-label={partner.name}
+        >
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            class={`${partner.logoHeight} w-auto object-contain`}
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
