@@ -1,0 +1,402 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/navbar.astro";
+import Footer from "../../components/footer.astro";
+
+const events = [
+  {
+    id: "event-1",
+    category: "Annual Conference",
+    categoryColor: "bg-green-100 text-green-800",
+    gradient: "from-green-800 to-green-950",
+    accentColor: "border-green-300 bg-green-50",
+    date: "October 15, 2026",
+    month: "OCT",
+    day: "15",
+    year: "2026",
+    venue: "Manila Hotel, Ermita, Manila",
+    title: "71st RBAP Annual National Convention",
+    excerpt:
+      "The flagship annual gathering of rural bankers across the Philippines — featuring keynote addresses from BSP officials, industry panels, and the election of RBAP officers.",
+    status: "Open for Registration",
+    statusColor: "bg-green-500",
+    statusText: "text-green-700",
+    statusBg: "bg-green-50 border-green-200",
+    href: "#",
+    featured: true,
+  },
+  {
+    id: "event-2",
+    category: "Workshop",
+    categoryColor: "bg-amber-100 text-amber-800",
+    gradient: "from-amber-500 to-amber-700",
+    accentColor: "border-amber-300 bg-amber-50",
+    date: "October 22, 2026",
+    month: "OCT",
+    day: "22",
+    year: "2026",
+    venue: "RBAP Training Center, Quezon City",
+    title: "Digital Banking & Core Banking System Workshop",
+    excerpt:
+      "Hands-on workshop for rural bank IT officers and management on shared digital infrastructure, core banking migration, and cybersecurity best practices.",
+    status: "Limited Slots",
+    statusColor: "bg-amber-500",
+    statusText: "text-amber-700",
+    statusBg: "bg-amber-50 border-amber-200",
+    href: "#",
+    featured: false,
+  },
+  {
+    id: "event-3",
+    category: "Seminar",
+    categoryColor: "bg-stone-100 text-stone-700",
+    gradient: "from-stone-600 to-stone-800",
+    accentColor: "border-stone-300 bg-stone-50",
+    date: "November 5, 2026",
+    month: "NOV",
+    day: "05",
+    year: "2026",
+    venue: "Davao City (Venue TBA)",
+    title: "Mindanao Regional Chapter Assembly & Seminar",
+    excerpt:
+      "Mindanao-based rural banks convene for the regional chapter assembly, featuring updates on BSP regulations, agri-lending programs, and a financial literacy seminar.",
+    status: "Coming Soon",
+    statusColor: "bg-stone-400",
+    statusText: "text-stone-600",
+    statusBg: "bg-stone-50 border-stone-200",
+    href: "#",
+    featured: false,
+  },
+  {
+    id: "event-4",
+    category: "Training",
+    categoryColor: "bg-green-100 text-green-800",
+    gradient: "from-green-700 to-green-900",
+    accentColor: "border-green-300 bg-green-50",
+    date: "November 12, 2026",
+    month: "NOV",
+    day: "12",
+    year: "2026",
+    venue: "Online (Zoom Webinar)",
+    title: "AML/CFT Compliance Training for Rural Banks",
+    excerpt:
+      "Mandatory compliance training covering Anti-Money Laundering and Counter-Terrorism Financing regulations, updated AMLC guidelines, and reporting requirements.",
+    status: "Open for Registration",
+    statusColor: "bg-green-500",
+    statusText: "text-green-700",
+    statusBg: "bg-green-50 border-green-200",
+    href: "#",
+    featured: false,
+  },
+  {
+    id: "event-5",
+    category: "Forum",
+    categoryColor: "bg-amber-100 text-amber-800",
+    gradient: "from-amber-600 to-amber-800",
+    accentColor: "border-amber-300 bg-amber-50",
+    date: "November 20, 2026",
+    month: "NOV",
+    day: "20",
+    year: "2026",
+    venue: "Cebu City (Venue TBA)",
+    title: "Visayas Rural Banking Forum & Expo",
+    excerpt:
+      "A regional forum showcasing rural banking innovations, financial inclusion programs, and investment opportunities in the Visayas island group.",
+    status: "Coming Soon",
+    statusColor: "bg-stone-400",
+    statusText: "text-stone-600",
+    statusBg: "bg-stone-50 border-stone-200",
+    href: "#",
+    featured: false,
+  },
+  {
+    id: "event-6",
+    category: "Training",
+    categoryColor: "bg-blue-100 text-blue-800",
+    gradient: "from-blue-700 to-blue-900",
+    accentColor: "border-blue-300 bg-blue-50",
+    date: "December 3, 2026",
+    month: "DEC",
+    day: "03",
+    year: "2026",
+    venue: "RBAP Training Center, Quezon City",
+    title: "Credit Risk Management Seminar for Rural Banks",
+    excerpt:
+      "A deep-dive training on credit risk assessment, loan portfolio management, and early warning systems tailored for rural bank loan officers and credit committee members.",
+    status: "Coming Soon",
+    statusColor: "bg-stone-400",
+    statusText: "text-stone-600",
+    statusBg: "bg-stone-50 border-stone-200",
+    href: "#",
+    featured: false,
+  },
+];
+
+const categories = ["All", "Annual Conference", "Workshop", "Seminar", "Training", "Forum"];
+
+const featured = events[0];
+const rest = events.slice(1);
+---
+
+<Layout
+  title="Events — Rural Bankers Association of the Philippines"
+  description="Stay updated on RBAP's upcoming events — conferences, workshops, seminars, training sessions, and regional assemblies for rural banking professionals across the Philippines."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-green-800 to-green-950 pt-20 pb-28">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 relative z-10">
+        <nav class="flex items-center gap-2 text-green-300 text-sm mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-green-400">News & Events</span>
+          <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-white font-medium">Events</span>
+        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-5">
+          <svg class="w-3.5 h-3.5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+          </svg>
+          <span class="text-green-100 text-sm font-medium tracking-wide">News & Events</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+          Upcoming Events
+        </h1>
+        <p class="text-lg text-green-100 max-w-2xl leading-relaxed">
+          Join RBAP at our conferences, workshops, training sessions, and regional assemblies happening across the Philippines.
+        </p>
+
+
+      </div>
+
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="bg-white border-b border-gray-100 shadow-sm sticky top-[64px] z-40">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center gap-1 overflow-x-auto py-3 no-scrollbar" id="filter-bar">
+          {categories.map((cat) => (
+            <button
+              data-filter={cat}
+              class={`filter-btn shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors border ${cat === "All" ? "bg-green-700 text-white border-green-700" : "text-gray-600 border-transparent hover:bg-green-50 hover:text-green-700 hover:border-green-200"}`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Events -->
+    <section class="py-16 bg-gray-50" id="events-list">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 space-y-16">
+
+        <!-- Featured Event -->
+        <div id="featured-section">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-1.5 h-8 bg-green-600 rounded-full"></div>
+            <h2 class="text-xl font-extrabold text-gray-900">Featured Event</h2>
+            <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-50 border border-green-200 px-3 py-1 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+              Open for Registration
+            </span>
+          </div>
+
+          <article
+            id={featured.id}
+            data-category={featured.category}
+            class="event-card group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col lg:flex-row"
+          >
+            <!-- Date panel -->
+            <div class={`lg:w-64 flex-shrink-0 bg-gradient-to-br ${featured.gradient} relative overflow-hidden flex flex-col items-center justify-center p-10 min-h-[200px]`}>
+              <div class="absolute inset-0 opacity-10">
+                <svg viewBox="0 0 200 200" class="w-full h-full"><defs><pattern id="dots-f" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="white"/></pattern></defs><rect width="200" height="200" fill="url(#dots-f)"/></svg>
+              </div>
+              <div class="relative text-center">
+                <div class="text-green-300 text-sm font-bold tracking-widest uppercase mb-1">{featured.month}</div>
+                <div class="text-white font-extrabold text-7xl leading-none">{featured.day}</div>
+                <div class="text-green-200 text-sm font-medium mt-1">{featured.year}</div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class={`inline-block px-3 py-1 text-xs font-bold rounded-full ${featured.categoryColor}`}>{featured.category}</span>
+                <span class={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full border ${featured.statusBg} ${featured.statusText}`}>
+                  <span class={`w-1.5 h-1.5 rounded-full ${featured.statusColor}`}></span>
+                  {featured.status}
+                </span>
+              </div>
+
+              <h2 class="text-2xl lg:text-3xl font-extrabold text-gray-900 group-hover:text-green-700 transition-colors mb-3 leading-snug">
+                {featured.title}
+              </h2>
+
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                {featured.venue}
+              </div>
+
+              <p class="text-gray-600 leading-relaxed mb-6 flex-1">{featured.excerpt}</p>
+
+              <a
+                href={featured.href}
+                class="inline-flex items-center gap-2 self-start px-6 py-3 bg-green-700 text-white font-semibold rounded-xl hover:bg-green-800 transition-all duration-200 shadow hover:shadow-lg hover:-translate-y-0.5 text-sm"
+              >
+                Register Now
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- All Upcoming Events -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-1.5 h-8 bg-green-600 rounded-full"></div>
+            <h2 class="text-xl font-extrabold text-gray-900">All Events</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="events-grid">
+            {rest.map((event) => (
+              <article
+                id={event.id}
+                data-category={event.category}
+                class="event-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-100 transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              >
+                <!-- Date header -->
+                <div class={`bg-gradient-to-br ${event.gradient} p-5 relative overflow-hidden`}>
+                  <div class="absolute inset-0 opacity-10">
+                    <svg viewBox="0 0 200 200" class="w-full h-full"><use href="#dots-f"/></svg>
+                  </div>
+                  <div class="relative flex items-center justify-between">
+                    <div>
+                      <div class="text-white/70 text-xs font-bold tracking-widest uppercase">{event.month}</div>
+                      <div class="text-white font-extrabold text-4xl leading-none">{event.day}</div>
+                      <div class="text-white/60 text-xs mt-0.5">{event.year}</div>
+                    </div>
+                    <span class={`inline-block px-2.5 py-1 text-xs font-bold rounded-full ${event.categoryColor}`}>{event.category}</span>
+                  </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-5 flex flex-col flex-1">
+                  <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-3">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                    <span class="line-clamp-1">{event.venue}</span>
+                  </div>
+
+                  <h3 class="font-bold text-gray-900 group-hover:text-green-700 transition-colors leading-snug mb-3 flex-1">
+                    {event.title}
+                  </h3>
+
+                  <p class="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-3">{event.excerpt}</p>
+
+                  <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <span class={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${event.statusBg} ${event.statusText}`}>
+                      <span class={`w-1.5 h-1.5 rounded-full ${event.statusColor}`}></span>
+                      {event.status}
+                    </span>
+                    <a
+                      href={event.href}
+                      class="inline-flex items-center gap-1 text-green-700 font-semibold text-sm hover:text-green-800 transition-colors"
+                    >
+                      Details
+                      <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <!-- Empty state (shown when filter returns nothing) -->
+          <div id="no-events" class="hidden text-center py-20">
+            <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+              </svg>
+            </div>
+            <p class="text-gray-500 font-medium">No events found for this category.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-800 to-green-900 py-14">
+      <div class="max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-1">Want to host an RBAP event?</h2>
+          <p class="text-green-200 text-sm">Reach out to the RBAP Secretariat to propose a seminar, training, or regional activity.</p>
+        </div>
+        <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm shrink-0">
+          Contact Secretariat
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .blob { position: absolute; border-radius: 9999px; pointer-events: none; }
+  .blob-1 { width: 28rem; height: 28rem; top: -6rem; right: -6rem; background: white; opacity: 0.03; }
+  .blob-2 { width: 20rem; height: 20rem; bottom: 2rem; left: -4rem; background: #4ade80; opacity: 0.07; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .event-card {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.event-card');
+  const noEvents = document.getElementById('no-events');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'All';
+
+      // Update active button style
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-green-700', 'text-white', 'border-green-700');
+        b.classList.add('text-gray-600', 'border-transparent');
+      });
+      btn.classList.add('bg-green-700', 'text-white', 'border-green-700');
+      btn.classList.remove('text-gray-600', 'border-transparent');
+
+      // Filter cards
+      let visible = 0;
+      cards.forEach(card => {
+        // Skip featured card inside the featured-section
+        if (card.closest('#featured-section')) return;
+        
+        const match = filter === 'All' || card.dataset.category === filter;
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      // Toggle featured section
+      const featuredSection = document.getElementById('featured-section');
+      if (featuredSection) {
+        featuredSection.style.display = filter === 'All' ? '' : 'none';
+      }
+
+      if (noEvents) noEvents.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>
